@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.cim.mapper.CimProjectMapper">
+    
+    <resultMap type="CimProject" id="CimProjectResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="number"    column="number"    />
+        <result property="description"    column="description"    />
+        <result property="industry"    column="industry"    />
+        <result property="stage"    column="stage"    />
+        <result property="investment"    column="investment"    />
+        <result property="constructionCompany"    column="construction_company"    />
+        <result property="designCompany"    column="design_company"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectCimProjectVo">
+        select id, name, number, description, industry, stage, investment, construction_company, design_company, del_flag, create_by, create_time, update_by, update_time, remark from cim_project
+    </sql>
+
+    <select id="selectCimProjectList" parameterType="CimProject" resultMap="CimProjectResult">
+        <include refid="selectCimProjectVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="number != null  and number != ''"> and number = #{number}</if>
+            <if test="industry != null  and industry != ''"> and industry = #{industry}</if>
+            <if test="stage != null  and stage != ''"> and stage = #{stage}</if>
+            <if test="constructionCompany != null  and constructionCompany != ''"> and construction_company = #{constructionCompany}</if>
+            <if test="designCompany != null  and designCompany != ''"> and design_company = #{designCompany}</if>
+        </where>
+    </select>
+    
+    <select id="selectCimProjectById" parameterType="Long" resultMap="CimProjectResult">
+        <include refid="selectCimProjectVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertCimProject" parameterType="CimProject" useGeneratedKeys="true" keyProperty="id">
+        insert into cim_project
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">name,</if>
+            <if test="number != null">number,</if>
+            <if test="description != null">description,</if>
+            <if test="industry != null">industry,</if>
+            <if test="stage != null">stage,</if>
+            <if test="investment != null">investment,</if>
+            <if test="constructionCompany != null">construction_company,</if>
+            <if test="designCompany != null">design_company,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="number != null">#{number},</if>
+            <if test="description != null">#{description},</if>
+            <if test="industry != null">#{industry},</if>
+            <if test="stage != null">#{stage},</if>
+            <if test="investment != null">#{investment},</if>
+            <if test="constructionCompany != null">#{constructionCompany},</if>
+            <if test="designCompany != null">#{designCompany},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCimProject" parameterType="CimProject">
+        update cim_project
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="number != null">number = #{number},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="industry != null">industry = #{industry},</if>
+            <if test="stage != null">stage = #{stage},</if>
+            <if test="investment != null">investment = #{investment},</if>
+            <if test="constructionCompany != null">construction_company = #{constructionCompany},</if>
+            <if test="designCompany != null">design_company = #{designCompany},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCimProjectById" parameterType="Long">
+        delete from cim_project where id = #{id}
+    </delete>
+
+    <delete id="deleteCimProjectByIds" parameterType="String">
+        delete from cim_project where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
