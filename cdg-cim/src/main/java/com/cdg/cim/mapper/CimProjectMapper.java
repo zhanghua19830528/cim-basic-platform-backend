@@ -1,15 +1,15 @@
-package com.ruoyi.cim.service;
+package com.cdg.cim.mapper;
 
 import java.util.List;
-import com.ruoyi.cim.domain.CimProject;
+import com.cdg.cim.domain.CimProject;
 
 /**
- * 项目信息Service接口
+ * 项目信息Mapper接口
  * 
  * @author cdg_zhanghua
- * @date 2022-05-20
+ * @date 2022-05-21
  */
-public interface ICimProjectService 
+public interface CimProjectMapper 
 {
     /**
      * 查询项目信息
@@ -44,18 +44,18 @@ public interface ICimProjectService
     public int updateCimProject(CimProject cimProject);
 
     /**
-     * 批量删除项目信息
-     * 
-     * @param ids 需要删除的项目信息主键集合
-     * @return 结果
-     */
-    public int deleteCimProjectByIds(Long[] ids);
-
-    /**
-     * 删除项目信息信息
+     * 删除项目信息
      * 
      * @param id 项目信息主键
      * @return 结果
      */
     public int deleteCimProjectById(Long id);
+
+    /**
+     * 批量删除项目信息
+     * 
+     * @param ids 需要删除的数据主键集合
+     * @return 结果
+     */
+    public int deleteCimProjectByIds(Long[] ids);
 }

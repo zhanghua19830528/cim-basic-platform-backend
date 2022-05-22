@@ -1,7 +1,9 @@
-package com.ruoyi.web.controller.cim;
+package com.cdg.cim.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +18,8 @@ import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.enums.BusinessType;
-import com.ruoyi.cim.domain.CimProject;
-import com.ruoyi.cim.service.ICimProjectService;
+import com.cdg.cim.domain.CimProject;
+import com.cdg.cim.service.ICimProjectService;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
 
@@ -25,8 +27,9 @@ import com.ruoyi.common.core.page.TableDataInfo;
  * 项目信息Controller
  *
  * @author cdg_zhanghua
- * @date 2022-05-20
+ * @date 2022-05-21
  */
+
 @RestController
 @RequestMapping("/cim/project")
 public class CimProjectController extends BaseController
@@ -37,6 +40,7 @@ public class CimProjectController extends BaseController
     /**
      * 查询项目信息列表
      */
+
     @PreAuthorize("@ss.hasPermi('cim:project:list')")
     @GetMapping("/list")
     public TableDataInfo list(CimProject cimProject)

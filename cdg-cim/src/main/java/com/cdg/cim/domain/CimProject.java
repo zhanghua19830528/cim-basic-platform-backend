@@ -1,4 +1,4 @@
-package com.ruoyi.cim.domain;
+package com.cdg.cim.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -9,7 +9,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 项目信息对象 cim_project
  * 
  * @author cdg_zhanghua
- * @date 2022-05-20
+ * @date 2022-05-21
  */
 public class CimProject extends BaseEntity
 {

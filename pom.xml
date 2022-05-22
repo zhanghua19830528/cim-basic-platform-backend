@@ -6,7 +6,7 @@
 	
     <groupId>com.ruoyi</groupId>
     <artifactId>ruoyi</artifactId>
-    <version>3.8.2</version>
+    <version>${ruoyi.version}</version>
 
     <name>ruoyi</name>
     <url>http://www.ruoyi.vip</url>
@@ -14,6 +14,7 @@
     
     <properties>
         <ruoyi.version>3.8.2</ruoyi.version>
+        <cim.version>1.0.2-SNAPSHOT</cim.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -177,7 +178,6 @@
                 <artifactId>ruoyi-generator</artifactId>
                 <version>${ruoyi.version}</version>
             </dependency>
-
             <!-- 核心模块-->
             <dependency>
                 <groupId>com.ruoyi</groupId>
@@ -199,8 +199,19 @@
                 <version>${ruoyi.version}</version>
             </dependency>
 
+            <!-- cim模块-->
+            <dependency>
+                <groupId>com.cdg</groupId>
+                <artifactId>cim</artifactId>
+                <version>${cim.version}</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
+
+
+    <packaging>pom</packaging>
 
     <modules>
         <module>ruoyi-admin</module>
@@ -209,8 +220,8 @@
         <module>ruoyi-quartz</module>
         <module>ruoyi-generator</module>
         <module>ruoyi-common</module>
+        <module>cdg-cim</module>
     </modules>
-    <packaging>pom</packaging>
 
 
     <dependencies>

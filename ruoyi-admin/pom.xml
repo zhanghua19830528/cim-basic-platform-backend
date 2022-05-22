@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
+
     <artifactId>ruoyi-admin</artifactId>
 
     <description>
@@ -59,6 +60,11 @@
         <dependency>
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-generator</artifactId>
+        </dependency>
+        <!-- cim模块-->
+        <dependency>
+            <groupId>com.cdg</groupId>
+            <artifactId>cim</artifactId>
         </dependency>
 
     </dependencies>

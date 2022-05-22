@@ -1,18 +1,18 @@
-package com.ruoyi.cim.service.impl;
+package com.cdg.cim.service.impl;
 
 import java.util.List;
 import com.ruoyi.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ruoyi.cim.mapper.CimProjectMapper;
-import com.ruoyi.cim.domain.CimProject;
-import com.ruoyi.cim.service.ICimProjectService;
+import com.cdg.cim.mapper.CimProjectMapper;
+import com.cdg.cim.domain.CimProject;
+import com.cdg.cim.service.ICimProjectService;
 
 /**
  * 项目信息Service业务层处理
  * 
  * @author cdg_zhanghua
- * @date 2022-05-20
+ * @date 2022-05-21
  */
 @Service
 public class CimProjectServiceImpl implements ICimProjectService 
