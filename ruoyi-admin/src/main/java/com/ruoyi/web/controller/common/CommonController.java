@@ -23,7 +23,7 @@ import com.ruoyi.framework.config.ServerConfig;
 
 /**
  * 通用请求处理
- * 
+ *
  * @author ruoyi
  */
 @RestController
@@ -39,7 +39,7 @@ public class CommonController
 
     /**
      * 通用下载请求
-     * 
+     *
      * @param fileName 文件名称
      * @param delete 是否删除
      */
@@ -77,16 +77,18 @@ public class CommonController
     {
         try
         {
-            // 上传文件路径
+            // 上传文件路径       如：E:/cdg_cim/uploadPath/upload
             String filePath = RuoYiConfig.getUploadPath();
-            // 上传并返回新文件名称
+            // 上传并返回新文件名称  如：E:/cdg_cim/uploadPath/upload/2022/05/24/ruoyi (5)_20220524084358A001.zip
+            ///profile/upload/2022/05/24/ruoyi (5)_20220524084358A001.zip
             String fileName = FileUploadUtils.upload(filePath, file);
-            String url = serverConfig.getUrl() + fileName;
+            String url = serverConfig.getUrl() +fileName;//FileUploadUtils.getUrlSuffix(filePath,file);
             AjaxResult ajax = AjaxResult.success();
-            ajax.put("url", url);
-            ajax.put("fileName", fileName);
-            ajax.put("newFileName", FileUtils.getName(fileName));
-            ajax.put("originalFilename", file.getOriginalFilename());
+            ajax.put("url", url);  // http://localhost:8080/profile/upload/2022/05/24/ruoyi (5)_20220524084452A002.zip
+            ajax.put("fileName", fileName);  //  /profile/upload/2022/05/24/ruoyi (5)_20220524084358A001.zip
+            ajax.put("newFileName", FileUtils.getName(fileName));  //ruoyi (5)_20220524084358A001.zip
+            ajax.put("originalFilename", file.getOriginalFilename());  //ruoyi (5).zip
+            ajax.put("physicalPath", filePath+ "/" +FileUploadUtils.extractFilename(file));  //增加服务器物理地址
             return ajax;
         }
         catch (Exception e)

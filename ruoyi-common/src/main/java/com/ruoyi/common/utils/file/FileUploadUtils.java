@@ -115,6 +115,19 @@ public class FileUploadUtils
         String absPath = getAbsoluteFile(baseDir, fileName).getAbsolutePath();
         file.transferTo(Paths.get(absPath));
         return getPathFileName(baseDir, fileName);
+        //修改为返回服务器物理路径
+        //return baseDir+ "/" +fileName;
+    }
+
+    /**
+     * 获取文件访问路径的后半部分，除协议和端口外
+     * @param baseDir
+     * @param file
+     * @return
+     */
+    public static final String getUrlSuffix(String baseDir, MultipartFile file) throws IOException {
+
+        return getPathFileName(baseDir, extractFilename(file));
     }
 
     /**
